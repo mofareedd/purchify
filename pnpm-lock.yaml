@@ -20,10 +20,16 @@ importers:
 
   apps/api:
     dependencies:
+      '@purchify/db':
+        specifier: '*'
+        version: link:../../packages/db
       hono:
         specifier: ^4.6.8
         version: 4.6.8
     devDependencies:
+      '@purchify/tsconfig':
+        specifier: '*'
+        version: link:../../packages/tsconfig
       '@types/bun':
         specifier: latest
         version: 1.1.12
