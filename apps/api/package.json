@@ -1,14 +1,16 @@
 {
-  "name": "api",
+  "name": "@purchify/api",
   "scripts": {
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@hono/zod-openapi": "^0.16.4",
+    "@purchify/db": "*",
     "hono": "^4.6.8",
-    "@purchify/db": "*"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "@purchify/tsconfig": "*"
+    "@purchify/tsconfig": "*",
+    "@types/bun": "latest"
   }
 }

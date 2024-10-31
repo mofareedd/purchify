@@ -7,21 +7,13 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
-    },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./src/client.ts"
-    },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
     }
   },
   "scripts": {
-    "dev": "tsc",
-    "build": "tsc",
-    "db:generate": "pnpm drizzle-kit generate --config=drizzle.config.ts",
-    "db:push": "pnpm drizzle-kit push --config=drizzle.config.ts"
+    "build": "tsup ./src/index.ts",
+    "dev": "tsup --watch ./dist/index.js",
+    "db:generate": "pnpm dotenv -e ../../.env drizzle-kit generate --config=drizzle.config.ts",
+    "db:push": "pnpm dotenv -e ../../.env drizzle-kit push --config=drizzle.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -35,7 +27,9 @@
     "@purchify/tsconfig": "*",
     "@types/node": "^22.8.4",
     "@types/pg": "^8.11.10",
+    "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.26.2",
+    "tsup": "^8.3.5",
     "typescript": "5.5.4"
   }
 }

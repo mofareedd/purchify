@@ -1,10 +1,10 @@
-import { Hono } from "hono";
-import { db } from "@purchify/db/client";
+import { z } from "zod";
+import { app } from "./app";
+import { ProcessEnv } from "./lib/env";
 
-const app = new Hono();
-
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
+const server = Bun.serve({
+  port: ProcessEnv.PORT,
+  fetch: app.fetch,
 });
 
-export default app;
+console.log(`Server is running on port http://localhost:${server.port}...`);

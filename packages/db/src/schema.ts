@@ -57,3 +57,52 @@ export const saleItemTable = pgTable("sale_item", (t) => ({
   quantity: t.numeric("quantity").notNull(),
   price: t.numeric("price").notNull(), // Price at the time of sale
 }));
+
+// // Payment Table
+// export const paymentMethodEnum = pgEnum("payment_method", [
+//   "credit_card",
+//   "stripe",
+//   "cash",
+// ]);
+
+// export const paymentTable = pgTable("payment", (t) => ({
+//   id: t.uuid("id").primaryKey().defaultRandom(),
+//   saleId: t.uuid("sale_id").references(() => saleTable.id),
+//   //   subscriptionId: t.foreignKey(subscription.subscriptionId), // Optional link to subscription
+//   amount: t.numeric("amount").notNull(),
+//   status: t.varchar("status", { length: 50 }).notNull(), // e.g., "succeeded", "failed"
+//   paymentMethod: t.varchar("payment_method", { length: 50 }).notNull(), // e.g., "credit_card"
+//   createdAt: t.timestamp("created_at").defaultNow(),
+//   stripePaymentId: t.varchar("stripe_payment_id", { length: 255 }), // Stripe payment reference
+// }));
+
+// // Subscription Table
+// export const planEnum = pgEnum("plan", [
+//   "Basic", // Free tier
+//   "Standard",
+//   "Premium",
+//   "Enterprise",
+// ]);
+
+// export const billingCycleEnum = pgEnum("billing_cycle", [
+//   "monthly",
+//   "quarterly",
+//   "annually",
+// ]);
+
+// export const subscription = pgTable("subscription", (t) => ({
+//   id: t.uuid("id").primaryKey().defaultRandom(),
+//   businessId: t.uuid("business_id").references(() => businessTable.id),
+//   plan: planEnum().notNull(),
+//   status: t.varchar("status", { length: 50 }).notNull(),
+//   startDate: t.timestamp("start_date").notNull(),
+//   endDate: t.timestamp("end_date"),
+//   stripeSubscriptionId: t
+//     .varchar("stripe_subscription_id", {
+//       length: 255,
+//     })
+//     .notNull(),
+//   stripeCustomerId: t.varchar("stripe_customer_id", { length: 255 }).notNull(),
+//   billingCycle: billingCycleEnum().notNull(),
+//   price: t.numeric("price").notNull(),
+// }));
