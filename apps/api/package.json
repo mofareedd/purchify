@@ -1,16 +1,21 @@
 {
   "name": "@purchify/api",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "test": "vitest run --reporter verbose"
   },
   "dependencies": {
+    "@clerk/backend": "^1.15.2",
+    "@hono/clerk-auth": "^2.0.0",
     "@hono/zod-openapi": "^0.16.4",
+    "@hono/zod-validator": "^0.4.1",
     "@purchify/db": "*",
     "hono": "^4.6.8",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@purchify/tsconfig": "*",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "vite-tsconfig-paths": "^5.0.1"
   }
 }

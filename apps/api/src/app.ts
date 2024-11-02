@@ -1,16 +1,14 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
 import { logger } from "hono/logger";
 import { ProcessEnv } from "./lib/env";
 import { db, productTable } from "@purchify/db";
+import { Hono } from "hono";
+import { businessRoute } from "./routes/business/business.route";
 
-const app = new OpenAPIHono();
+const app = new Hono();
 
 app.use(logger());
-app.get("/", async (c) => {
-  const products = await db.select().from(productTable);
-  console.log(products);
-  return c.json({ products });
-});
+
+const apiRoutes = app.basePath("/api").route("/business", businessRoute);
 
 app.notFound((c) => {
   return c.json({ message: `route is not found - ${c.req.path}` }, 404);
@@ -26,7 +24,7 @@ app.onError((err, c) => {
   return c.json({
     message: err.message,
     statusCode,
-    stack: ProcessEnv.NODE_ENV === "development" ? err.stack : "🤫",
+    // stack: ProcessEnv.NODE_ENV === "development" ? err.stack : "🤫",
   });
 });
 
